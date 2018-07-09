@@ -1,0 +1,23 @@
+{
+    "name": "panwenbin/wechat-sdk-wrapper",
+    "description": "a wrapper for wechat sdk",
+    "keywords": [
+        "wechat",
+        "weixin"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pan Wenbin",
+            "email": "panwenbin@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "panwenbin\\wechat\\": "src/"
+        }
+    }
+}

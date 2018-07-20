@@ -11,7 +11,7 @@ use panwenbin\wechat\messages\reply\TextReplyMessage;
 $xml = file_get_contents('php://input');
 $messageBuilder = new MessageBuilder($xml);
 $message = $messageBuilder->build();
-$message->autoReply(function () use ($message) {
+echo $message->autoReply(function () use ($message) {
     if ($message instanceof TextMessage && $message->content == 'hi') {
         return new TextReplyMessage([
             'content' => 'hello',

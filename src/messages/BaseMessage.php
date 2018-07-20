@@ -37,6 +37,7 @@ class BaseMessage
 
     /**
      * @param callable $callback
+     * @return string
      * @throws WechatException
      */
     public function autoReply(callable $callback)
@@ -47,7 +48,7 @@ class BaseMessage
             $message->toUserName = $message->toUserName ?: $this->fromUserName;
             $message->fromUserName = $message->fromUserName ?: $this->toUserName;
             $message->createTime = $message->createTime ?: time();
-            echo $message->toXml();
+            return $message->toXml();
         } else {
             throw new WechatException('bindAutoReplyCallback传入回调函数必须返回一个BaseReplyMessage实例');
         }

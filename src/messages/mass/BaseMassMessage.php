@@ -40,6 +40,6 @@ class BaseMassMessage
         } elseif (is_array($this->to)) {
             $jsonArr['touser'] = $this->to;
         }
-        return json_encode($jsonArr);
+        return json_encode($jsonArr, JSON_UNESCAPED_UNICODE);
     }
 }

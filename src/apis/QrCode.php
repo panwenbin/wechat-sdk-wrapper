@@ -47,7 +47,7 @@ class QrCode extends TokenBasedApi
         if ($expireSeconds) {
             $data['expire_seconds'] = $expireSeconds;
         }
-        $response = Curl::to($apiUrl)->withData(json_encode($data))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode($data, JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 

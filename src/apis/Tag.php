@@ -42,7 +42,7 @@ class Tag extends TokenBasedApi
     public function create(string $name)
     {
         $apiUrl = $this->token->apiUrl(self::API_CREATE);
-        $response = Curl::to($apiUrl)->withData(json_encode(['tag' => ['name' => $name]]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['tag' => ['name' => $name]], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -93,7 +93,7 @@ class Tag extends TokenBasedApi
     public function update(int $id, string $name)
     {
         $apiUrl = $this->token->apiUrl(self::API_UPDATE);
-        $response = Curl::to($apiUrl)->withData(json_encode(['tag' => ['id' => $id, 'name' => $name]]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['tag' => ['id' => $id, 'name' => $name]], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -111,7 +111,7 @@ class Tag extends TokenBasedApi
     public function delete(int $id)
     {
         $apiUrl = $this->token->apiUrl(self::API_DELETE);
-        $response = Curl::to($apiUrl)->withData(json_encode(['tag' => ['id' => $id]]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['tag' => ['id' => $id]], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -136,7 +136,7 @@ class Tag extends TokenBasedApi
     public function getUsers(int $tagId, string $nextOpenid = '')
     {
         $apiUrl = $this->token->apiUrl(self::API_GET_USERS);
-        $response = Curl::to($apiUrl)->withData(json_encode(['tagid' => $tagId, 'next_openid' => $nextOpenid]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['tagid' => $tagId, 'next_openid' => $nextOpenid], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -155,7 +155,7 @@ class Tag extends TokenBasedApi
     public function batchTagging(array $openidList, int $tagId)
     {
         $apiUrl = $this->token->apiUrl(self::API_BATCH_TAGGING);
-        $response = Curl::to($apiUrl)->withData(json_encode(['openid_list' => $openidList, 'tagid' => $tagId]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['openid_list' => $openidList, 'tagid' => $tagId], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -174,7 +174,7 @@ class Tag extends TokenBasedApi
     public function batchUnTagging(array $openidList, int $tagId)
     {
         $apiUrl = $this->token->apiUrl(self::API_BATCH_UN_TAGGING);
-        $response = Curl::to($apiUrl)->withData(json_encode(['openid_list' => $openidList, 'tagid' => $tagId]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['openid_list' => $openidList, 'tagid' => $tagId], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -194,7 +194,7 @@ class Tag extends TokenBasedApi
     public function getIdListOnUser(string $openid)
     {
         $apiUrl = $this->token->apiUrl(self::API_GET_ID_LIST_ON_USER);
-        $response = Curl::to($apiUrl)->withData(json_encode(['openid' => $openid]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['openid' => $openid], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -220,7 +220,7 @@ class Tag extends TokenBasedApi
     public function getBlackList(string $beginOpenid = '')
     {
         $apiUrl = $this->token->apiUrl(self::API_GET_BLACK_LIST);
-        $response = Curl::to($apiUrl)->withData(json_encode(['begin_openid' => $beginOpenid]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['begin_openid' => $beginOpenid], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -238,7 +238,7 @@ class Tag extends TokenBasedApi
     public function batchBlackList(array $openidList)
     {
         $apiUrl = $this->token->apiUrl(self::API_BATCH_BLACK_LIST);
-        $response = Curl::to($apiUrl)->withData(json_encode(['openid_list' => $openidList]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['openid_list' => $openidList], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -256,7 +256,7 @@ class Tag extends TokenBasedApi
     public function batchUnBlackList(array $openidList)
     {
         $apiUrl = $this->token->apiUrl(self::API_BATCH_UN_BLACK_LIST);
-        $response = Curl::to($apiUrl)->withData(json_encode(['openid_list' => $openidList]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['openid_list' => $openidList], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 }

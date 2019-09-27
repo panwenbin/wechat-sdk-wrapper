@@ -63,7 +63,7 @@ class Menu extends TokenBasedApi
     public function create(array $buttons)
     {
         $apiUrl = $this->token->apiUrl(self::API_CREATE);
-        $response = Curl::to($apiUrl)->withData(json_encode(['button' => $buttons]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['button' => $buttons], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 

@@ -73,7 +73,7 @@ class Token
     protected function write()
     {
         $tokenFile = sys_get_temp_dir() . '/wx_access_token_for_' . $this->config->getAppid();
-        file_put_contents($tokenFile, json_encode(['accessToken' => $this->accessToken, 'expiresAt' => $this->expiresAt]));
+        file_put_contents($tokenFile, json_encode(['accessToken' => $this->accessToken, 'expiresAt' => $this->expiresAt], JSON_UNESCAPED_UNICODE));
         return true;
     }
 

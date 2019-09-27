@@ -74,7 +74,7 @@ class ConditionalMenu extends TokenBasedApi
     public function add(array $buttons, $matchRule)
     {
         $apiUrl = $this->token->apiUrl(self::API_ADD);
-        $response = Curl::to($apiUrl)->withData(json_encode(['button' => $buttons, 'matchrule' => $matchRule]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['button' => $buttons, 'matchrule' => $matchRule], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -92,7 +92,7 @@ class ConditionalMenu extends TokenBasedApi
     public function delete(string $menuId)
     {
         $apiUrl = $this->token->apiUrl(self::API_DELETE);
-        $response = Curl::to($apiUrl)->withData(json_encode(['menuid' => $menuId]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['menuid' => $menuId], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -128,7 +128,7 @@ class ConditionalMenu extends TokenBasedApi
     public function tryMatch(string $userId)
     {
         $apiUrl = $this->token->apiUrl(self::API_TRY_MATCH);
-        $response = Curl::to($apiUrl)->withData(json_encode(['user_id' => $userId]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['user_id' => $userId], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 }

@@ -31,7 +31,7 @@ class ShortUrl extends TokenBasedApi
     public function shorten(string $longUrl)
     {
         $apiUrl = $this->token->apiUrl(self::API_SHORTEN);
-        $response = Curl::to($apiUrl)->withData(json_encode(['action' => 'long2short', 'long_url' => $longUrl]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['action' => 'long2short', 'long_url' => $longUrl], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 }

@@ -21,6 +21,6 @@ class News
 
     public function toJson()
     {
-        return json_encode(['articles' => $this->articles]);
+        return json_encode(['articles' => $this->articles], JSON_UNESCAPED_UNICODE);
     }
 }

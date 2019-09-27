@@ -54,7 +54,7 @@ class Material extends TokenBasedApi
     public function updateNews(string $mediaId, int $index = 0, array $articles)
     {
         $apiUrl = $this->token->apiUrl(self::API_UPDATE_NEWS);
-        $response = Curl::to($apiUrl)->withData(json_encode(['media_id' => $mediaId, 'index' => $index, 'articles' => $articles]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['media_id' => $mediaId, 'index' => $index, 'articles' => $articles], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -88,7 +88,7 @@ class Material extends TokenBasedApi
     public function get(string $mediaId)
     {
         $apiUrl = $this->token->apiUrl(self::API_GET_MATERIAL);
-        $response = Curl::to($apiUrl)->withData(json_encode(['media_id' => $mediaId]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['media_id' => $mediaId], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -106,7 +106,7 @@ class Material extends TokenBasedApi
     public function delete(string $mediaId)
     {
         $apiUrl = $this->token->apiUrl(self::API_DELETE_MATERIAL);
-        $response = Curl::to($apiUrl)->withData(json_encode(['media_id' => $mediaId]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['media_id' => $mediaId], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 

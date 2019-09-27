@@ -60,7 +60,7 @@ class User extends TokenBasedApi
     public function updateRemark(string $openid, string $remark)
     {
         $apiUrl = $this->token->apiUrl(self::API_UPDATE_REMARK);
-        $response = Curl::to($apiUrl)->withData(json_encode(['openid' => $openid, 'remark' => $remark]))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode(['openid' => $openid, 'remark' => $remark], JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 
@@ -146,7 +146,7 @@ class User extends TokenBasedApi
             $userList[] = ['openid' => $openid, 'lang' => $lang];
         }
         $apiUrl = $this->token->apiUrl(self::API_INFO);
-        $response = Curl::to($apiUrl)->withData(json_encode($userList))->post();
+        $response = Curl::to($apiUrl)->withData(json_encode($userList, JSON_UNESCAPED_UNICODE))->post();
         return $response->jsonBodyArray();
     }
 }

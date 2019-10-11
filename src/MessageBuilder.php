@@ -42,11 +42,11 @@ class MessageBuilder
                         return new SubscribeEventMessage($jsonArr);
                     case 'unsubscribe':
                         return new UnsubscribeEventMessage($jsonArr);
-                    case 'scan':
+                    case 'SCAN':
                         return new ScanEventMessage($jsonArr);
-                    case 'location':
+                    case 'LOCATION':
                         return new LocationEventMessage($jsonArr);
-                    case 'click':
+                    case 'CLICK':
                         return new ClickEventMessage($jsonArr);
                 }
             } else {
